@@ -85,14 +85,13 @@ struct ContentView: View {
                         }
                         .padding()
                     }
-                    .background(Color.gray.opacity(0.1).ignoresSafeArea())
-                    .offset(y:200)
+                    .offset(y:180)
 
          
         }
     }
 }
-
+  
 // 定義一個單獨的 Container 視圖
 struct TextContainer: View {
     let text: String
@@ -116,7 +115,7 @@ struct ProfileCardView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 31)
                 .fill(Color(red: 251/255, green: 250/255, blue: 243/255))
-                .frame(width: 390, height: 217)
+                .frame(width: 370, height: 217)
                 .shadow(radius: 2)
 
             VStack(alignment: .leading, spacing: 10) {
@@ -137,34 +136,39 @@ struct ProfileCardView: View {
                         Text(profile.status)
                             .font(.system(size: 12, weight: .bold))
                             .foregroundColor(.black)
+                            .lineSpacing(4)
                            
                            
 
-                        ZStack(alignment: .topLeading) {
-                            Image(profile.bubbleImageName)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 240, height: 130)
-                                .offset(x: -40, y: -20)
+                        ZStack(alignment: .center) {
 
                             Text(profile.message)
                                 .font(.system(size: 14))
                                 .foregroundColor(.white)
                                 .padding(20)
-                                .frame(width: 200, alignment: .leading)
-                                .offset(x: 0, y: 4)
+                                .background(
+                                    Image(profile.bubbleImageName)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 60, height: 60)
+                                        .offset(y:-5)
+                                )
+                                .frame(width: 220, alignment: .leading)
                                 .lineLimit(3)
                         }
                         .padding(.top, 4)
+                        .frame(height: 80)
+                        .offset(x:-20)
                     }
                 }
-
+                
+                                
                 Text(profile.story)
                     .font(.system(size: 18))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .frame(maxWidth: .infinity)
-                    .offset( y: -8)
+                    .fontWeight(.bold)
             }
             .padding(.horizontal, 23)
             .padding(.vertical, 18)
